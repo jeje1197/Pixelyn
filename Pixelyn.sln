@@ -1,26 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pixelyn", "Pixelyn.vcxproj", "{992F4186-C09B-4EF8-B22C-2792B00D771A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{8BCB97F2-B766-4C0D-94D5-A1B265DB661A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pixelyn", "Pixelyn\Pixelyn.vcxproj", "{992F4186-C09B-4EF8-B22C-2792B00D771A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BCB97F2-B766-4C0D-94D5-A1B265DB661A}.Debug|x64.ActiveCfg = Debug|x64
+		{8BCB97F2-B766-4C0D-94D5-A1B265DB661A}.Debug|x64.Build.0 = Debug|x64
+		{8BCB97F2-B766-4C0D-94D5-A1B265DB661A}.Release|x64.ActiveCfg = Release|x64
+		{8BCB97F2-B766-4C0D-94D5-A1B265DB661A}.Release|x64.Build.0 = Release|x64
 		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Debug|x64.ActiveCfg = Debug|x64
 		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Debug|x64.Build.0 = Debug|x64
-		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Debug|x86.ActiveCfg = Debug|Win32
-		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Debug|x86.Build.0 = Debug|Win32
 		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Release|x64.ActiveCfg = Release|x64
 		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Release|x64.Build.0 = Release|x64
-		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Release|x86.ActiveCfg = Release|Win32
-		{992F4186-C09B-4EF8-B22C-2792B00D771A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
