@@ -11,12 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Pixelyn\Log.h" />
     <ClInclude Include="src\Pixelyn.h" />
     <ClInclude Include="src\Pixelyn\Application.h" />
     <ClInclude Include="src\Pixelyn\Core.h" />
     <ClInclude Include="src\Pixelyn\EntryPoint.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Pixelyn\Log.cpp" />
     <ClCompile Include="src\Pixelyn\Application.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -66,6 +68,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Pixelyn\vendor\spdlog\include;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
