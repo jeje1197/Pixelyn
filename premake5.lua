@@ -40,6 +40,12 @@ project "Pixelyn"
 			"PX_BUILD_DLL"
 		}
 
+		-- Set the working directory for debugging
+        debugdir ("$(SolutionDir)bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/Sandbox")
+            
+        -- Set the command to run for debugging (the startup program)
+        debugcommand ("$(SolutionDir)bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/Sandbox/Sandbox.exe")
+
 		postbuildcommands {
 			-- Ensure the Sandbox directory exists using outputdir
 			'IF NOT EXIST "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Sandbox" (',
