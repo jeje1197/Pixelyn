@@ -37,13 +37,21 @@ project "Pixelyn"
 		defines
 		{
 			"PX_PLATFORM_WINDOWS",
-			"PX_BUILD_DLL",
-			""
+			"PX_BUILD_DLL"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/%{prj.name}")
+		postbuildcommands {
+			-- Ensure the Sandbox directory exists using outputdir
+			'IF NOT EXIST "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Sandbox" (',
+			'    mkdir "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Sandbox"',
+			')',
+
+			'IF EXIST "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Pixelyn\\Pixelyn.dll" (',
+			'    echo Pixelyn.dll exists!',
+			')',
+    
+			-- Copy Pixelyn.dll to the Sandbox directory using outputdir
+			'copy /Y "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Pixelyn\\Pixelyn.dll" "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Sandbox\\" > nul'
 		}
 
 	filter "configurations:Debug"

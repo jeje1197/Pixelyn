@@ -4,6 +4,8 @@
 
 #include "Core.h"
 
+#define FMT_UNICODE 0
+
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 

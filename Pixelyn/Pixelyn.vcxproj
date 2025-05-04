@@ -85,7 +85,6 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
-      <AdditionalOptions>/utf-8</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -93,7 +92,13 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Pixelyn\Pixelyn.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST "..\bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll" (</Command>
+      <Command>IF NOT EXIST "$(SolutionDir)bin\Debug-windows-x86_64\Sandbox" (
+    mkdir "$(SolutionDir)bin\Debug-windows-x86_64\Sandbox"
+)
+IF EXIST "$(SolutionDir)bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll" (
+    echo Pixelyn.dll exists!
+)
+copy /Y "$(SolutionDir)bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionDir)bin\Debug-windows-x86_64\Sandbox\" &gt; nul</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -118,7 +123,13 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Release-windows-x86_64\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Release-windows-x86_64\$(ProjectName) &gt; nul)</Command>
+      <Command>IF NOT EXIST "$(SolutionDir)bin\Release-windows-x86_64\Sandbox" (
+    mkdir "$(SolutionDir)bin\Release-windows-x86_64\Sandbox"
+)
+IF EXIST "$(SolutionDir)bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll" (
+    echo Pixelyn.dll exists!
+)
+copy /Y "$(SolutionDir)bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionDir)bin\Release-windows-x86_64\Sandbox\" &gt; nul</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -143,7 +154,13 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Dist-windows-x86_64\$(ProjectName) &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Dist-windows-x86_64\$(ProjectName) &gt; nul)</Command>
+      <Command>IF NOT EXIST "$(SolutionDir)bin\Dist-windows-x86_64\Sandbox" (
+    mkdir "$(SolutionDir)bin\Dist-windows-x86_64\Sandbox"
+)
+IF EXIST "$(SolutionDir)bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll" (
+    echo Pixelyn.dll exists!
+)
+copy /Y "$(SolutionDir)bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionDir)bin\Dist-windows-x86_64\Sandbox\" &gt; nul</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
