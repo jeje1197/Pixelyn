@@ -19,6 +19,10 @@
     <ClInclude Include="src\Pixelyn\Log.h">
       <Filter>Pixelyn</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pixelyn\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Pixelyn\Events\Event.h" />
+    <ClInclude Include="src\Pixelyn\Events\KeyEvent.h" />
+    <ClInclude Include="src\Pixelyn\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pixelyn\Application.cpp">

@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;PX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\Pixelyn;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -168,6 +168,10 @@ copy /Y "$(SolutionDir)bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionD
     <ClInclude Include="src\Pixelyn\Application.h" />
     <ClInclude Include="src\Pixelyn\Core.h" />
     <ClInclude Include="src\Pixelyn\EntryPoint.h" />
+    <ClInclude Include="src\Pixelyn\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Pixelyn\Events\Event.h" />
+    <ClInclude Include="src\Pixelyn\Events\KeyEvent.h" />
+    <ClInclude Include="src\Pixelyn\Events\MouseEvent.h" />
     <ClInclude Include="src\Pixelyn\Log.h" />
   </ItemGroup>
   <ItemGroup>

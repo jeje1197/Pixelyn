@@ -26,6 +26,7 @@ project "Pixelyn"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
@@ -88,8 +89,8 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Pixelyn/vendor/spdlog/include",
-		"Pixelyn/src"
+		"Pixelyn/src",
+		"Pixelyn/vendor/spdlog/include"
 	}
 
 	links
