@@ -4,6 +4,9 @@
     <Filter Include="Pixelyn">
       <UniqueIdentifier>{EEFD940F-5ADD-13AB-63F5-9E81CF537A0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pixelyn\Events">
+      <UniqueIdentifier>{12F21FC1-FEBF-13C7-E753-84EDD3C0EF2B}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pixelyn.h" />
@@ -16,13 +19,22 @@
     <ClInclude Include="src\Pixelyn\EntryPoint.h">
       <Filter>Pixelyn</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pixelyn\Events\ApplicationEvent.h">
+      <Filter>Pixelyn\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pixelyn\Events\Event.h">
+      <Filter>Pixelyn\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pixelyn\Events\KeyEvent.h">
+      <Filter>Pixelyn\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pixelyn\Events\MouseEvent.h">
+      <Filter>Pixelyn\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pixelyn\Log.h">
       <Filter>Pixelyn</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pixelyn\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Pixelyn\Events\Event.h" />
-    <ClInclude Include="src\Pixelyn\Events\KeyEvent.h" />
-    <ClInclude Include="src\Pixelyn\Events\MouseEvent.h" />
+    <ClInclude Include="src\pxpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pixelyn\Application.cpp">
@@ -31,5 +43,6 @@
     <ClCompile Include="src\Pixelyn\Log.cpp">
       <Filter>Pixelyn</Filter>
     </ClCompile>
+    <ClCompile Include="src\pxpch.cpp" />
   </ItemGroup>
 </Project>

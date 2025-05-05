@@ -1,3 +1,4 @@
+#include "pxpch.h"
 #include "Log.h"
 
 namespace Pixelyn

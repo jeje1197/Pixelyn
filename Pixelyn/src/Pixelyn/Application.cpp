@@ -1,6 +1,7 @@
+#include "pxpch.h"
 #include "Application.h"
 
-#include "Events/ApplicationEvent.h"
+#include "Pixelyn/Events/ApplicationEvent.h"
 #include "Log.h"
 
 namespace Pixelyn {

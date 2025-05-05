@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Event.h"
-
-#include <sstream>
+#include "Pixelyn/Events/Event.h"
 
 namespace Pixelyn {
 

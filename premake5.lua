@@ -18,6 +18,9 @@ project "Pixelyn"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "pxpch.h"
+	pchsource "Pixelyn/src/pxpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

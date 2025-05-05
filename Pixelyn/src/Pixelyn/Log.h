@@ -1,7 +1,5 @@
 #pragma once
 
-#include <memory.h>
-
 #include "Core.h"
 
 #define FMT_UNICODE 0
