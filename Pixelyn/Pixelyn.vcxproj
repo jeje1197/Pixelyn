@@ -79,27 +79,23 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;PX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;GLFW_INCLUDE_NONE;PX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Pixelyn\Pixelyn.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(SolutionDir)bin\Debug-windows-x86_64\Sandbox" (
-    mkdir "$(SolutionDir)bin\Debug-windows-x86_64\Sandbox"
-)
-IF EXIST "$(SolutionDir)bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll" (
-    echo Pixelyn.dll exists!
-)
-copy /Y "$(SolutionDir)bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionDir)bin\Debug-windows-x86_64\Sandbox\" &gt; nul</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -107,14 +103,15 @@ copy /Y "$(SolutionDir)bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll" "$(Solution
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;PX_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;GLFW_INCLUDE_NONE;PX_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -122,16 +119,11 @@ copy /Y "$(SolutionDir)bin\Debug-windows-x86_64\Pixelyn\Pixelyn.dll" "$(Solution
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(SolutionDir)bin\Release-windows-x86_64\Sandbox" (
-    mkdir "$(SolutionDir)bin\Release-windows-x86_64\Sandbox"
-)
-IF EXIST "$(SolutionDir)bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll" (
-    echo Pixelyn.dll exists!
-)
-copy /Y "$(SolutionDir)bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionDir)bin\Release-windows-x86_64\Sandbox\" &gt; nul</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -139,14 +131,15 @@ copy /Y "$(SolutionDir)bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll" "$(Soluti
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;PX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PX_PLATFORM_WINDOWS;PX_BUILD_DLL;GLFW_INCLUDE_NONE;PX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -154,16 +147,11 @@ copy /Y "$(SolutionDir)bin\Release-windows-x86_64\Pixelyn\Pixelyn.dll" "$(Soluti
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(SolutionDir)bin\Dist-windows-x86_64\Sandbox" (
-    mkdir "$(SolutionDir)bin\Dist-windows-x86_64\Sandbox"
-)
-IF EXIST "$(SolutionDir)bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll" (
-    echo Pixelyn.dll exists!
-)
-copy /Y "$(SolutionDir)bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionDir)bin\Dist-windows-x86_64\Sandbox\" &gt; nul</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -175,15 +163,30 @@ copy /Y "$(SolutionDir)bin\Dist-windows-x86_64\Pixelyn\Pixelyn.dll" "$(SolutionD
     <ClInclude Include="src\Pixelyn\Events\Event.h" />
     <ClInclude Include="src\Pixelyn\Events\KeyEvent.h" />
     <ClInclude Include="src\Pixelyn\Events\MouseEvent.h" />
+    <ClInclude Include="src\Pixelyn\Layer.h" />
+    <ClInclude Include="src\Pixelyn\LayerStack.h" />
     <ClInclude Include="src\Pixelyn\Log.h" />
+    <ClInclude Include="src\Pixelyn\Platform\Window\WindowsWindow.h" />
+    <ClInclude Include="src\Pixelyn\Window.h" />
     <ClInclude Include="src\pxpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pixelyn\Application.cpp" />
+    <ClCompile Include="src\Pixelyn\Layer.cpp" />
+    <ClCompile Include="src\Pixelyn\LayerStack.cpp" />
     <ClCompile Include="src\Pixelyn\Log.cpp" />
+    <ClCompile Include="src\Pixelyn\Platform\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\pxpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\Glad\Glad.vcxproj">
+      <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,6 +10,14 @@ workspace "Pixelyn"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Pixelyn/vendor/GLFW/include"
+IncludeDir["Glad"] = "Pixelyn/vendor/Glad/include"
+
+include "Pixelyn/vendor/GLFW"
+include "Pixelyn/vendor/Glad"
+
 project "Pixelyn"
 	location "Pixelyn"
 	kind "SharedLib"
@@ -24,13 +32,22 @@ project "Pixelyn"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
+	}
+
+	links 
+	{ 
+		"GLFW",
+		"Glad",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -41,39 +58,28 @@ project "Pixelyn"
 		defines
 		{
 			"PX_PLATFORM_WINDOWS",
-			"PX_BUILD_DLL"
+			"PX_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
-		-- Set the working directory for debugging
-        debugdir ("$(SolutionDir)bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/Sandbox")
-            
-        -- Set the command to run for debugging (the startup program)
-        debugcommand ("$(SolutionDir)bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}/Sandbox/Sandbox.exe")
-
-		postbuildcommands {
-			-- Ensure the Sandbox directory exists using outputdir
-			'IF NOT EXIST "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Sandbox" (',
-			'    mkdir "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Sandbox"',
-			')',
-
-			'IF EXIST "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Pixelyn\\Pixelyn.dll" (',
-			'    echo Pixelyn.dll exists!',
-			')',
-    
-			-- Copy Pixelyn.dll to the Sandbox directory using outputdir
-			'copy /Y "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Pixelyn\\Pixelyn.dll" "$(SolutionDir)bin\\%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}\\Sandbox\\" > nul'
+		postbuildcommands
+		{
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
 	filter "configurations:Debug"
-		defines { "PX_DEBUG" }
+		defines "PX_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines { "PX_RELEASE" }
+		defines "PX_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines { "PX_DIST" }
+		defines "PX_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -87,13 +93,13 @@ project "Sandbox"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs
 	{
-		"Pixelyn/src",
-		"Pixelyn/vendor/spdlog/include"
+		"Pixelyn/vendor/spdlog/include",
+		"Pixelyn/src"
 	}
 
 	links
@@ -112,13 +118,16 @@ project "Sandbox"
 		}
 
 	filter "configurations:Debug"
-		defines { "PX_DEBUG" }
+		defines "PX_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines { "PX_RELEASE" }
+		defines "PX_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines { "PX_DIST" }
+		defines "PX_DIST"
+		buildoptions "/MD"
 		optimize "On"
